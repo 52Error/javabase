@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class num4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Введите доход за месяц в SEK: ");
+        double income = scanner.nextDouble();
+        double tax = 0;
+        
+        if (income <= 18800) {
+            tax = income * 0.11;
+        } else if (income <= 468700) {
+            tax = 18800 * 0.11 + (income - 18800) * 0.20;
+        } else if (income <= 675700) {
+            tax = 18800 * 0.11 + (468700 - 18800) * 0.20 + (income - 468700) * 0.32;
+        } else {
+            tax = 18800 * 0.11 + (468700 - 18800) * 0.20 + (675700 - 468700) * 0.32 + 
+                  (income - 675700) * 0.40;
+        }
+        
+        double netIncome = income - tax;
+        
+        System.out.printf("Общий доход: %.2f SEK%n", income);
+        System.out.printf("Налог: %.2f SEK%n", tax);
+        System.out.printf("Чистый доход: %.2f SEK%n", netIncome);
+        
+        scanner.close();
+    }
+}
